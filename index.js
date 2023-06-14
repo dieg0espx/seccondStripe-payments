@@ -18,10 +18,10 @@ app.post("/payment", cors(), async (req, res) => {
 	
 	let stripe = stripee();
 	switch (propertyName) {
-		case 'disabled':
+		case 'Tuneberg':
 			stripe = stripee("sk_test_51N0v1YCwOWyVBlDMWC6YFPjMvjlMtAPqlHvV0kFUNR969WYIJCWvAGRYP1cyWlazHYdcf7JhKBOzOeTUUklGSX9o00UW2HBQ9E");
 			break;
-		case 'Tuneberg':
+		case 'Disabled':
 			stripe = stripee("sk_test_51NJ0hELJsUTWMJlYVlH4BVzNUCsJZGwHpFSTgY764aso5LXqzJ4kCiQ76yAry1cmE3RX6rcuG8XpLop7NrY9O9KS005TRB27Nd");
 			break;
 		default:
