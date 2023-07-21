@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.post('/test'), (req, res) =>{
+app.post('/test', (req, res) =>{
 	res.status(200).json("KEY: " + process.env.DIEGO_SECRET_KEY )
-}
+})
 
 app.post("/payment", cors(), async (req, res) => {
 	let { amount, id, description, propertyName } = req.body
