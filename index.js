@@ -15,18 +15,55 @@ app.use(cors())
 
 app.post("/payment", cors(), async (req, res) => {
 	let { amount, id, description, propertyName } = req.body
+
+	const Diego = [process.env.DIEGO_API_KEY, process.env.DIEGO_SECRET_KEY];
+	const David = [process.env.DAVID_API_KEY, process.env.DAVID_SECRET_KEY];
+	const PJInvestments = [process.env.PJINVESTMENTS_API_KEY, process.env.PJINVESTMENTS_SECRET_KEY];
+	const Phill = [process.env.PHILL_API_KEY, process.env.PHILL_SECRET_KEY];
+	const RCHomes = [process.env.RCHOMES_API_KEY, process.env.RCHOMES_SECRET_KEY];
+	const RockCity = [process.env.ROCKCITY_API_KEY, process.env.ROCKCITY_SECRET_KEY];
 	
 	let stripe = stripee();
+
 	switch (propertyName) {
-		case 'Tuneberg':
-			stripe = stripee("sk_test_51N0v1YCwOWyVBlDMWC6YFPjMvjlMtAPqlHvV0kFUNR969WYIJCWvAGRYP1cyWlazHYdcf7JhKBOzOeTUUklGSX9o00UW2HBQ9E");
-			break;
-		case 'Disabled':
-			stripe = stripee("sk_test_51NJ0hELJsUTWMJlYVlH4BVzNUCsJZGwHpFSTgY764aso5LXqzJ4kCiQ76yAry1cmE3RX6rcuG8XpLop7NrY9O9KS005TRB27Nd");
-			break;
-		default:
-			console.log("PROPERTY HAS NO OWNER");
-			break;
+		case "Tuneberg":
+			stripe = stripee(Diego[1]);
+		  break;
+		case " Oak Park Game Room":
+		  console.log("David");
+		  stripe = stripee(David[1]);
+		  break;
+		case "Mario's Pad":
+		  console.log("David");
+		  stripe = stripee(David[1]);
+		  break;
+		case "Sentinel":
+		  console.log("PJ INVESTMENTS");
+		  stripe = stripee(PJInvestments[1]);
+		  break;
+		case "Marigold":
+		  console.log("Phill");
+		  stripe = stripee(Phill[1]);
+		  break;
+		case "Landstrom":
+		  console.log("Phill");
+		  stripe = stripee(Phill[1]);
+		  break
+		case "Golfers Retreat":
+		  console.log("Phill");
+		  stripe = stripee(Phill[1]);
+		  break;
+		case "The Pool House":
+		  console.log("RC HOMEs");
+		  stripe = stripee(RCHomes[1]);
+		  break;
+		case "The lake house":
+		  console.log("ROCK CITY HOMES");
+		  stripe = stripee(RockCity[1]);
+		  break;  
+	    default:
+		  console.log("PROPERTY HAS NOT STRIPE OWNER");
+		   break;
 	}
 
 	try {
