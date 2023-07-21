@@ -13,6 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
+app.post('/test'), (req, res) =>{
+	res.json({"KEY: ":process.env.DIEGO_SECRET_KEY})
+}
+
 app.post("/payment", cors(), async (req, res) => {
 	let { amount, id, description, propertyName } = req.body
 
@@ -22,6 +26,9 @@ app.post("/payment", cors(), async (req, res) => {
 	const Phill = [process.env.PHILL_API_KEY, process.env.PHILL_SECRET_KEY];
 	const RCHomes = [process.env.RCHOMES_API_KEY, process.env.RCHOMES_SECRET_KEY];
 	const RockCity = [process.env.ROCKCITY_API_KEY, process.env.ROCKCITY_SECRET_KEY];
+
+	console.log(Diego[1]);
+	
 	
 	let stripe = stripee();
 
