@@ -13,19 +13,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.post('/test', (req, res) =>{
-	res.status(200).json("KEY: " + process.env.DIEGO_SECRET_KEY )
-})
 
 app.post("/payment", cors(), async (req, res) => {
 	let { amount, id, description, propertyName } = req.body
 
-	const Diego = [process.env.DIEGO_API_KEY, process.env.DIEGO_SECRET_KEY];
-	const David = [process.env.DAVID_API_KEY, process.env.DAVID_SECRET_KEY];
-	const PJInvestments = [process.env.PJINVESTMENTS_API_KEY, process.env.PJINVESTMENTS_SECRET_KEY];
-	const Phill = [process.env.PHILL_API_KEY, process.env.PHILL_SECRET_KEY];
-	const RCHomes = [process.env.RCHOMES_API_KEY, process.env.RCHOMES_SECRET_KEY];
-	const RockCity = [process.env.ROCKCITY_API_KEY, process.env.ROCKCITY_SECRET_KEY];
+	const Diego = process.env.DIEGO_SECRET_KEY;
+	const David = process.env.DAVID_SECRET_KEY;
+	const PJInvestments = process.env.PJINVESTMENTS_SECRET_KEY;
+	const Phill = process.env.PHILL_SECRET_KEY;
+	const RCHomes = process.env.RCHOMES_SECRET_KEY;
+	const RockCity = process.env.ROCKCITY_SECRET_KEY;
 
 	console.log(Diego[1]);
 	
@@ -34,39 +31,39 @@ app.post("/payment", cors(), async (req, res) => {
 
 	switch (propertyName) {
 		case "Tuneberg":
-			stripe = stripee(Diego[1]);
+			stripe = stripee(Diego);
 		  break;
 		case " Oak Park Game Room":
 		  console.log("David");
-		  stripe = stripee(David[1]);
+		  stripe = stripee(David);
 		  break;
 		case "Mario's Pad":
 		  console.log("David");
-		  stripe = stripee(David[1]);
+		  stripe = stripee(David);
 		  break;
 		case "Sentinel":
 		  console.log("PJ INVESTMENTS");
-		  stripe = stripee(PJInvestments[1]);
+		  stripe = stripee(PJInvestments);
 		  break;
 		case "Marigold":
 		  console.log("Phill");
-		  stripe = stripee(Phill[1]);
+		  stripe = stripee(Phill);
 		  break;
 		case "Landstrom":
 		  console.log("Phill");
-		  stripe = stripee(Phill[1]);
+		  stripe = stripee(Phill);
 		  break
 		case "Golfers Retreat":
 		  console.log("Phill");
-		  stripe = stripee(Phill[1]);
+		  stripe = stripee(Phill);
 		  break;
 		case "The Pool House":
 		  console.log("RC HOMEs");
-		  stripe = stripee(RCHomes[1]);
+		  stripe = stripee(RCHomes);
 		  break;
 		case "The lake house":
 		  console.log("ROCK CITY HOMES");
-		  stripe = stripee(RockCity[1]);
+		  stripe = stripee(RockCity);
 		  break;  
 	    default:
 		  console.log("PROPERTY HAS NOT STRIPE OWNER");
