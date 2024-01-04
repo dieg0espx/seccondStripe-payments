@@ -93,7 +93,7 @@ app.post("/payment", cors(), async (req, res) => {
 })
 
 app.post("/paymentInflatables", cors(), async (req, res) => {
-	let { amount } = req.body
+	let { id, amount } = req.body
 
 	const Diego = process.env.DIEGO_SECRET_KEY;
 	let stripe = stripee(Diego);
