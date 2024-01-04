@@ -92,6 +92,33 @@ app.post("/payment", cors(), async (req, res) => {
 	}
 })
 
+app.post("/paymentInflatables", cors(), async (req, res) => {
+	let { amount } = req.body
+
+	const Diego = process.env.DIEGO_SECRET_KEY;
+	let stripe = stripee(Diego);
+	try {
+		const payment = await stripe.paymentIntents.create({
+			amount,
+			currency: "USD",
+			description,
+			payment_method: id,
+			confirm: true
+		})
+		console.log("Payment", payment)
+		res.json({
+			message: "Payment successful",
+			success: true
+		})
+	} catch (error) {
+		console.log("Error", error)
+		res.json({
+			message: "Payment failed",
+			success: false
+		})
+	}
+})
+
 
 app.listen(process.env.PORT || 4000, () => {
 	console.log("Sever is listening on port 4000")
